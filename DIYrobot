@@ -1,0 +1,75 @@
+
+#define mo1 3
+#define mo2 5
+#define mb1 6
+#define mb2 9
+int trigPin=11;
+int echoPin=12;
+int dis;
+float dur;
+int speed=80;
+
+void setup()
+{
+
+}
+
+
+void loop() {
+if (distance()>15){
+  forward(speed);
+  delay(100);
+  
+}else{
+  backward(speed);
+  delay(500);  
+  right(speed);
+  delay(500);  
+    
+ if (dist()>15){
+  right(speed);
+  delay(500);
+    }
+  }
+}
+pinMode (mo1,1);
+pinMode (mo2,1);
+pinMode (mb1,1);
+pinMode (mb2,1);
+pinMode (trigPin,OUTPUT);
+pinMode (echoPin,INPUT);
+Serial.begin(9600);
+
+byte right(int speed){
+  analogWrite(MA1,speed);
+  analogWrite(MA2,0);
+  analogWrite(mb1,0);
+  analogWrite(mb2,0);
+  }
+  byte left(int speed){
+  analogWrite(MA1,0);
+  analogWrite(MA2,0);
+  analogWrite(mb1,speed);
+  analogWrite(mb2,0);
+  }
+  byte forward(int speed){
+  analogWrite(MA1,speed);
+  analogWrite(MA2,0);
+  analogWrite(mb1,speed);
+  analogWrite(mb2,0);
+  }
+  byte backward(int speed)
+  analogWrite(MA1,0);
+  analogWrite(MA2,speed);
+  analogWrite(mb1,0);
+  analogWrite(mb2,speed);
+  
+int distance();{
+  digitalWrite(trigPin,0);
+  delayMicroseconds(2);
+  digitalWrite(trigPin,1);
+  delayMicroseconds(10);
+  digitalWrite(trigPin,0);
+  dur pulseIn(echoPin,1);
+  return dur*0.034/2;
+}
